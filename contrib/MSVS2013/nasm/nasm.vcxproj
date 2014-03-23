@@ -32,7 +32,12 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExtensionsToDeleteOnClean>$(SolutionDir)..\..\insnsb.c;$(SolutionDir)..\..\insnsa.c;$(SolutionDir)..\..\insnsd.c;$(SolutionDir)..\..\insnsi.h;$(SolutionDir)..\..\insnsn.c;$(SolutionDir)..\..\regs.c;$(SolutionDir)..\..\regs.h;$(SolutionDir)..\..\regflags.c;$(SolutionDir)..\..\regdis.c;$(SolutionDir)..\..\regdis.h;$(SolutionDir)..\..\regvals.c;$(SolutionDir)..\..\tokhash.c;$(SolutionDir)..\..\tokens.h;$(SolutionDir)..\..\version.h;$(SolutionDir)..\..\version.mac;$(SolutionDir)..\..\macros.c;$(SolutionDir)..\..\pptok.h;$(SolutionDir)..\..\pptok.c;$(SolutionDir)..\..\pptok.ph;$(SolutionDir)..\..\iflaggen.h;$(SolutionDir)..\..\iflag.c;$(SolutionDir)..\..\directiv.h;$(SolutionDir)..\..\directiv.c;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ExtensionsToDeleteOnClean>$(SolutionDir)..\..\insnsb.c;$(SolutionDir)..\..\insnsa.c;$(SolutionDir)..\..\insnsd.c;$(SolutionDir)..\..\insnsi.h;$(SolutionDir)..\..\insnsn.c;$(SolutionDir)..\..\regs.c;$(SolutionDir)..\..\regs.h;$(SolutionDir)..\..\regflags.c;$(SolutionDir)..\..\regdis.c;$(SolutionDir)..\..\regdis.h;$(SolutionDir)..\..\regvals.c;$(SolutionDir)..\..\tokhash.c;$(SolutionDir)..\..\tokens.h;$(SolutionDir)..\..\version.h;$(SolutionDir)..\..\version.mac;$(SolutionDir)..\..\macros.c;$(SolutionDir)..\..\pptok.h;$(SolutionDir)..\..\pptok.c;$(SolutionDir)..\..\pptok.ph;$(SolutionDir)..\..\iflaggen.h;$(SolutionDir)..\..\iflag.c;$(SolutionDir)..\..\directiv.h;$(SolutionDir)..\..\directiv.c;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level2</WarningLevel>
