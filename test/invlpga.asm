@@ -1,4 +1,4 @@
-;Testname=unoptimized; Arguments=-fbin -oinvlpga.bin;     Files=stdout stderr invlpga.bin
+;Testname=unoptimized; Arguments=-fbin -oinvlpga.bin -O0; Files=stdout stderr invlpga.bin
 ;Testname=optimized;   Arguments=-fbin -oinvlpga.bin -Ox; Files=stdout stderr invlpga.bin
 
 	bits 32
