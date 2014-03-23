@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D85042C4-378F-4B50-8959-66B206021BE2}</ProjectGuid>
+    <RootNamespace>ndisasm</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExtensionsToDeleteOnClean>$(SolutionDir)..\..\insnsb.c;$(SolutionDir)..\..\insnsa.c;$(SolutionDir)..\..\insnsd.c;$(SolutionDir)..\..\insnsi.h;$(SolutionDir)..\..\insnsn.c;$(SolutionDir)..\..\regs.c;$(SolutionDir)..\..\regs.h;$(SolutionDir)..\..\regflags.c;$(SolutionDir)..\..\regdis.c;$(SolutionDir)..\..\regdis.h;$(SolutionDir)..\..\regvals.c;$(SolutionDir)..\..\tokhash.c;$(SolutionDir)..\..\tokens.h;$(SolutionDir)..\..\version.h;$(SolutionDir)..\..\version.mac;$(SolutionDir)..\..\macros.c;$(SolutionDir)..\..\pptok.h;$(SolutionDir)..\..\pptok.c;$(SolutionDir)..\..\pptok.ph;$(SolutionDir)..\..\iflaggen.h;$(SolutionDir)..\..\iflag.c;$(SolutionDir)..\..\directiv.h;$(SolutionDir)..\..\directiv.c;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ExtensionsToDeleteOnClean>$(SolutionDir)..\..\insnsb.c;$(SolutionDir)..\..\insnsa.c;$(SolutionDir)..\..\insnsd.c;$(SolutionDir)..\..\insnsi.h;$(SolutionDir)..\..\insnsn.c;$(SolutionDir)..\..\regs.c;$(SolutionDir)..\..\regs.h;$(SolutionDir)..\..\regflags.c;$(SolutionDir)..\..\regdis.c;$(SolutionDir)..\..\regdis.h;$(SolutionDir)..\..\regvals.c;$(SolutionDir)..\..\tokhash.c;$(SolutionDir)..\..\tokens.h;$(SolutionDir)..\..\version.h;$(SolutionDir)..\..\version.mac;$(SolutionDir)..\..\macros.c;$(SolutionDir)..\..\pptok.h;$(SolutionDir)..\..\pptok.c;$(SolutionDir)..\..\pptok.ph;$(SolutionDir)..\..\iflaggen.h;$(SolutionDir)..\..\iflag.c;$(SolutionDir)..\..\directiv.h;$(SolutionDir)..\..\directiv.c;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;HAVE__SNPRINTF;HAVE__VSNPRINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4146</DisableSpecificWarnings>
+      <OmitFramePointers>true</OmitFramePointers>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>call $(SolutionDir)createfiles.cmd</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;HAVE__SNPRINTF;HAVE__VSNPRINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4146</DisableSpecificWarnings>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PreBuildEvent />
+    <PreBuildEvent />
+    <PreBuildEvent>
+      <Command>call $(SolutionDir)createfiles.cmd</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\disasm.c" />
+    <ClCompile Include="..\..\..\disp8.c" />
+    <ClCompile Include="..\..\..\iflag.c" />
+    <ClCompile Include="..\..\..\insnsb.c" />
+    <ClCompile Include="..\..\..\insnsd.c" />
+    <ClCompile Include="..\..\..\insnsn.c" />
+    <ClCompile Include="..\..\..\nasmlib.c" />
+    <ClCompile Include="..\..\..\ndisasm.c" />
+    <ClCompile Include="..\..\..\regdis.c" />
+    <ClCompile Include="..\..\..\regs.c" />
+    <ClCompile Include="..\..\..\sync.c" />
+    <ClCompile Include="..\..\..\ver.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\disasm.h" />
+    <ClInclude Include="..\..\..\disp8.h" />
+    <ClInclude Include="..\..\..\iflag.h" />
+    <ClInclude Include="..\..\..\nasmlib.h" />
+    <ClInclude Include="..\..\..\regdis.h" />
+    <ClInclude Include="..\..\..\regs.h" />
+    <ClInclude Include="..\..\..\sync.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

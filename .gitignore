@@ -80,3 +80,11 @@ TAGS
 /version.sed
 /iflag.c
 /iflaggen.h
+/contrib/MSVS2013/nasm.sdf
+/contrib/MSVS2013/nasm.opensdf
+/contrib/MSVS2013/Debug
+/contrib/MSVS2013/Release
+/contrib/MSVS2013/nasm/Debug
+/contrib/MSVS2013/nasm/Release
+/contrib/MSVS2013/ndisasm/Debug
+/contrib/MSVS2013/ndisasm/Release

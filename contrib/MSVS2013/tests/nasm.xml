@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectSchemaDefinitions 
+  xmlns="http://schemas.microsoft.com/build/2009/properties" 
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+<!--
+<ProjectSchemaDefinitions
+  xmlns="http://schemas.microsoft.com/build/2009/properties"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://schemas.microsoft.com/build/2009/properties/"
+  xmlns:sys="clr-namespace:System;assembly=mscorlib">
+-->
+                                  
+    <Rule
+    Name="NASM"
+    PageTemplate="tool"
+    DisplayName="NASM"
+    Order="200">
+
+    <Rule.DataSource>
+      <DataSource Persistence="ProjectFile" ItemType="NASM" />
+    </Rule.DataSource>
+
+    <Rule.Categories>
+      <Category Name="General" DisplayName="General" />
+      <Category Name="Warnings" DisplayName="Warnings" />
+      <Category Name="Advanced" DisplayName="Advanced" />
+      <Category Name="Command Line" DisplayName="Command Line" Subtype="CommandLine" />
+    </Rule.Categories>
+
+    <StringProperty
+      Name="Inputs"
+      Category="Command Line"
+      IsRequired="true">
+
+      <StringProperty.DataSource>
+        <DataSource Persistence="ProjectFile" ItemType="NASM" SourceType="Item" />
+      </StringProperty.DataSource>
+
+    </StringProperty>
+
+    <StringProperty
+      Name="OutputFileName"
+      DisplayName="Output File Name"
+      Description="Specifies the name of the output file name.     (-o[file])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.1"
+      Switch="-o&quot;[value]&quot;" />
+
+    <EnumProperty
+      Name="OutputFileFormat"
+      DisplayName="Output File Format"
+      Description="Specifies the output file format.     (-f[format])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.2">
+      <EnumValue Name="bin"     Switch="-fbin"     DisplayName="flat-form binary files (e.g. DOS .COM, .SYS)" />
+      <EnumValue Name="ith"     Switch="-fith"     DisplayName="Intel hex" />
+      <EnumValue Name="srec"    Switch="-fsrec"    DisplayName="Motorola S-records" />
+      <EnumValue Name="aout"    Switch="-faout"    DisplayName="Linux a.out object files" />
+      <EnumValue Name="aoutb"   Switch="-faoutb"   DisplayName="NetBSD/FreeBSD a.out object files" />
+      <EnumValue Name="coff"    Switch="-fcoff"    DisplayName="COFF (i386) object files (e.g. DJGPP for DOS)" />
+      <EnumValue Name="elf32"   Switch="-felf32"   DisplayName="ELF32 (i386) object files (e.g. Linux)" />
+      <EnumValue Name="elf64"   Switch="-felf64"   DisplayName="ELF64 (x86_64) object files (e.g. Linux)" />
+      <EnumValue Name="elfx32"  Switch="-felfx32"  DisplayName="ELFX32 (x86_64) object files (e.g. Linux)" />
+      <EnumValue Name="as86"    Switch="-fas86"    DisplayName="Linux as86 (bin86 version 0.3) object files" />
+      <EnumValue Name="obj"     Switch="-fobj"     DisplayName="MS-DOS 16-bit/32-bit OMF object files" />
+      <EnumValue Name="win32"   Switch="-fwin32"   DisplayName="Microsoft Win32 (i386) object files" />
+      <EnumValue Name="win64"   Switch="-fwin64"   DisplayName="Microsoft Win64 (x86-64) object files" />
+      <EnumValue Name="rdf"     Switch="-frdf"     DisplayName="Relocatable Dynamic Object File Format v2.0" />
+      <EnumValue Name="ieee"    Switch="-fieee"    DisplayName="IEEE-695 (LADsoft variant) object file format" />
+      <EnumValue Name="macho32" Switch="-fmacho32" DisplayName="NeXTstep/OpenStep/Rhapsody/Darwin/MacOS X (i386) object files" />
+      <EnumValue Name="macho64" Switch="-fmacho64" DisplayName="NeXTstep/OpenStep/Rhapsody/Darwin/MacOS X (x86_64) object files" />
+      <EnumValue Name="dbg"     Switch="-fdbg"     DisplayName="Trace of all info passed to output stage" />
+      <EnumValue Name="elf"     Switch="-felf"     DisplayName="ELF (short name for ELF32)" />
+      <EnumValue Name="macho"   Switch="-fmacho"   DisplayName="MACHO (short name for MACHO32)" />
+      <EnumValue Name="win"     Switch="-fwin"     DisplayName="WIN (short name for WIN32)" />
+    </EnumProperty>
+
+    <StringProperty
+      Name="ListingFile"
+      DisplayName="Listing File"
+      Description="Generate a listing file.     (-l[file])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.3"
+      Switch="-l&quot;[value]&quot;" />
+
+    <EnumProperty
+      Name="ErrorReportingFormat"
+      DisplayName="Error Reporting Format"
+      Description="Selecting an error reporting format.     (-X[format])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.13">
+      <EnumValue Name="gnu" Switch="-Xgnu" DisplayName="GNU Format" />
+      <EnumValue Name="vc"  Switch="-Xvc"  DisplayName="VC Format" />
+    </EnumProperty>
+
+    <StringProperty
+      Name="ErrorFile"
+      DisplayName="Error File"
+      Description="Send errors to a file.     (-Z[file])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.14"
+      Switch="-Z&quot;[value]&quot;" />
+
+      
+    <StringListProperty
+      Name="IncludeDir"
+      DisplayName="Include File Search Directories"
+      Description="Include file search directories.     (-i[file])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.16"
+      Separator=" -i"
+      Switch="-i&quot;[value]&quot;" />
+
+    <StringListProperty
+      Name="IncludeFile"
+      DisplayName="Include Files"
+      Description="Include files.     (-p[file])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.17"
+      Separator=" -p"
+      Switch="-p&quot;[value]&quot;" />
+
+    <StringListProperty
+      Name="Definitions"
+      DisplayName="Preprocessor Definitions"
+      Description="Preprocessor definitions.     (-d[value])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.18"
+      Separator=" -d"
+      Switch="-d[value]" />
+
+    <StringListProperty
+      Name="UnDefinitions"
+      DisplayName="Undefine Preprocessor Definitions"
+      Description="Undefine preprocessor definitions.     (-u[value])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.19"
+      Separator=" -u"
+      Switch="-u[value]" />
+
+    <EnumProperty
+      Name="Optimization"
+      DisplayName="Specifying Multipass Optimization"
+      Description="Specifying multipass optimization.     (-O[format])"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.22">
+      <EnumValue Name="O0" Switch="-O0" DisplayName="No optimization" />
+      <EnumValue Name="O1" Switch="-O1" DisplayName="Minimal optimization" />
+      <EnumValue Name="Ox" Switch="-Ox" DisplayName="Multipass optimization" />
+    </EnumProperty>
+
+    <BoolProperty 
+      Name="TASMCompatibility"
+      DisplayName="TASM Compatibility Mode"
+      Description="TASM compatibility mode.     (-t)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.23"
+      Switch="-t" />
+
+
+    <EnumProperty
+      Name="WarningMacroParams"
+      DisplayName="Macro Params"
+      Category="Warnings"
+      Description="Covers warnings about multi-line macros being invoked with the wrong number of parameters.     (-w+macro-params)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableMacroParams" Switch="-w-macro-params" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningMacroSelfref"
+      DisplayName="Macro Selfref"
+      Category="Warnings"
+      Description="Warns if a macro references itself.     (-w+macro-selfref)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="" Switch="" DisplayName="Disable (default)" />
+      <EnumValue Name="EnableMacroSelfref" Switch="-w+macro-selfref" DisplayName="Enable" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningMacroDefaults"
+      DisplayName="Macro Defaults"
+      Category="Warnings"
+      Description="Warns when a macro has more default parameters than optional parameters.     (-w+macro-defaults)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableMacroDefaults" Switch="-w-macro-defaults" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningOrphanLabels"
+      DisplayName="Orphan Labels"
+      Category="Warnings"
+      Description="Warnings about source lines which contain no instruction but define a label without a trailing colon.     (-w+orphan-labels)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableOrphanLabels" Switch="-w-orphan-labels" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningNumberOverflow"
+      DisplayName="Number Overflow"
+      Category="Warnings"
+      Description="Covers warnings about numeric constants which don't fit in 64 bits.     (-w+number-overflow)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableNumberOverflow" Switch="-w-number-overflow" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningGnuElfExtensions"
+      DisplayName="Gnu Elf Extensions"
+      Category="Warnings"
+      Description="Warns if 8-bit or 16-bit relocations are used in -f elf format. The GNU extensions allow this.     (-w+gnu-elf-extensions)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="" Switch="" DisplayName="Disable (default)" />
+      <EnumValue Name="EnableGnuElfExtensions" Switch="-w+gnu-elf-extensions" DisplayName="Enable" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningFloatOverflow"
+      DisplayName="Float Overflow"
+      Category="Warnings"
+      Description="Warns about floating point overflow.     (-w+float-overflow)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableFloatOverflow" Switch="-w-float-overflow" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningFloatDenorm"
+      DisplayName="Float Denorm"
+      Category="Warnings"
+      Description="Warns about floating point denormals.     (-w+float-denorm)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="" Switch="" DisplayName="Disable (default)" />
+      <EnumValue Name="EnableFloatDenorm" Switch="-w+float-denorm" DisplayName="Enable" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningFloatUnderflow"
+      DisplayName="Float Underflow"
+      Category="Warnings"
+      Description="Warns about floating point underflow.     (-w+float-underflow)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="" Switch="" DisplayName="Disable (default)" />
+      <EnumValue Name="EnableFloatUnderflow" Switch="-w+float-underflow" DisplayName="Enable" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningFloatTooLong"
+      DisplayName="Float Too Long"
+      Category="Warnings"
+      Description="Warns about too many digits in floating-point numbers.     (-w+float-toolong)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableFloatTooLong" Switch="-w-float-toolong" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningUser"
+      DisplayName="User"
+      Category="Warnings"
+      Description="Controls %warning directives.     (-w+user)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableUser" Switch="-w-user" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningLock"
+      DisplayName="Lock"
+      Category="Warnings"
+      Description="Warns about LOCK prefixes on unlockable instructions.     (-w+lock)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableLock" Switch="-w-lock" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningHLE"
+      DisplayName="HLE"
+      Category="Warnings"
+      Description="Warns about invalid use of the HLE XACQUIRE or XRELEASE prefixes.     (-w+hle)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="DisableHLE" Switch="-w-hle" DisplayName="Disable" />
+      <EnumValue Name="" Switch="" DisplayName="Enable (default)" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningError"
+      DisplayName="Treat Warnings as Errors"
+      Category="Warnings"
+      Description="Causes warnings to be treated as errors.     (-w+error)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="" Switch="" DisplayName="Disable (default)" />
+      <EnumValue Name="EnableError" Switch="-w+error" DisplayName="Enable" />
+    </EnumProperty>
+
+    <EnumProperty
+      Name="WarningAll"
+      DisplayName="Enable All Warnings"
+      Category="Warnings"
+      Description="Is an alias for all suppressible warning classes (not including error).     (-w+all)"
+      HelpUrl="http://www.nasm.us/doc/nasmdoc2.html#section-2.1.24">
+      <EnumValue Name="" Switch="" DisplayName="Disable (default)" />
+      <EnumValue Name="EnableAll" Switch="-w+all" DisplayName="Enable" />
+    </EnumProperty>
+
+    <StringProperty
+      Name="NasmExecutableDir"
+      DisplayName="Nasm executable directory"
+      Category="Advanced"
+      Description="Directory where nasm is."
+      IncludeInCommandLine="false"
+      Switch="-i[value]" />
+
+    <StringProperty
+      Name="CommandLineTemplate"
+      DisplayName="Command Line"
+      Visible="False"
+      IncludeInCommandLine="False" />
+
+    <DynamicEnumProperty
+      Name="NASMBeforeTargets"
+      Category="General"
+      EnumProvider="Targets"
+      IncludeInCommandLine="False">
+
+      <DynamicEnumProperty.DisplayName>
+        <sys:String>Execute Before</sys:String>
+      </DynamicEnumProperty.DisplayName>
+      <DynamicEnumProperty.Description>
+        <sys:String>Specifies the targets for the build customization to run before.</sys:String>
+      </DynamicEnumProperty.Description>
+      <DynamicEnumProperty.ProviderSettings>
+        <NameValuePair Name="Exclude" Value="^NASMBeforeTargets|^Compute" />
+      </DynamicEnumProperty.ProviderSettings>
+      <DynamicEnumProperty.DataSource>
+        <DataSource Persistence="ProjectFile" HasConfigurationCondition="true" />
+      </DynamicEnumProperty.DataSource>
+
+    </DynamicEnumProperty>
+
+    <DynamicEnumProperty
+      Name="NASMAfterTargets"
+      DisplayName="Execute After"
+      Description="Specifies the targets for the build customization to run after."
+      Category="General"
+      EnumProvider="Targets"
+      IncludeInCommandLine="False">
+
+      <DynamicEnumProperty.ProviderSettings>
+        <NameValuePair Name="Exclude" Value="^NASMAfterTargets|^Compute" />
+      </DynamicEnumProperty.ProviderSettings>
+      <DynamicEnumProperty.DataSource>
+        <DataSource Persistence="ProjectFile" ItemType="" HasConfigurationCondition="true" />
+      </DynamicEnumProperty.DataSource>
+
+    </DynamicEnumProperty>
+    <!--    
+    <StringListProperty 
+      Name="Outputs"
+      DisplayName="Outputs"
+      Visible="False"
+      IncludeInCommandLine="False" />
+-->
+    <StringProperty
+      Name="ExecutionDescription"
+      DisplayName="Execution Description"
+      Visible="False"
+      IncludeInCommandLine="False" />
+
+    <StringListProperty
+      Name="AdditionalDependencies"
+      DisplayName="Additional Dependencies"
+      IncludeInCommandLine="False"
+      Visible="False" />
+
+    <StringProperty
+      Subtype="AdditionalOptions"
+      Name="AdditionalOptions"
+      Category="Command Line"
+      DisplayName="Additional Options"
+      Description="Additional Options" />
+
+  </Rule>
+
+  <ItemType
+    Name="NASM"
+    DisplayName="NASM" />
+
+  <FileExtension
+    Name="*.asm"
+    ContentType="NASM" />
+
+  <ContentType
+    Name="NASM"
+    DisplayName="NASM"
+    ItemType="NASM" />
+
+</ProjectSchemaDefinitions>

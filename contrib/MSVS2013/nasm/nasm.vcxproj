@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9FE15A97-D700-4BED-AB79-0EE3E369758B}</ProjectGuid>
+    <RootNamespace>nasm</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>
+      </Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;HAVE__SNPRINTF;HAVE__VSNPRINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4146;4703</DisableSpecificWarnings>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>call $(SolutionDir)createfiles.cmd</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level2</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;HAVE__SNPRINTF;HAVE__VSNPRINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>4146;4703</DisableSpecificWarnings>
+      <OmitFramePointers>true</OmitFramePointers>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PreBuildEvent>
+      <Command>call $(SolutionDir)createfiles.cmd</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\assemble.c" />
+    <ClCompile Include="..\..\..\crc64.c" />
+    <ClCompile Include="..\..\..\directiv.c" />
+    <ClCompile Include="..\..\..\disp8.c" />
+    <ClCompile Include="..\..\..\eval.c" />
+    <ClCompile Include="..\..\..\exprlib.c" />
+    <ClCompile Include="..\..\..\float.c" />
+    <ClCompile Include="..\..\..\hashtbl.c" />
+    <ClCompile Include="..\..\..\iflag.c" />
+    <ClCompile Include="..\..\..\ilog2.c" />
+    <ClCompile Include="..\..\..\insnsa.c" />
+    <ClCompile Include="..\..\..\insnsb.c" />
+    <ClCompile Include="..\..\..\labels.c" />
+    <ClCompile Include="..\..\..\lib\strlcpy.c" />
+    <ClCompile Include="..\..\..\listing.c" />
+    <ClCompile Include="..\..\..\macros.c" />
+    <ClCompile Include="..\..\..\nasm.c" />
+    <ClCompile Include="..\..\..\nasmlib.c" />
+    <ClCompile Include="..\..\..\output\nulldbg.c" />
+    <ClCompile Include="..\..\..\output\nullout.c" />
+    <ClCompile Include="..\..\..\output\outaout.c" />
+    <ClCompile Include="..\..\..\output\outas86.c" />
+    <ClCompile Include="..\..\..\output\outbin.c" />
+    <ClCompile Include="..\..\..\output\outcoff.c" />
+    <ClCompile Include="..\..\..\output\outdbg.c" />
+    <ClCompile Include="..\..\..\output\outelf.c" />
+    <ClCompile Include="..\..\..\output\outelf32.c" />
+    <ClCompile Include="..\..\..\output\outelf64.c" />
+    <ClCompile Include="..\..\..\output\outelfx32.c" />
+    <ClCompile Include="..\..\..\output\outform.c" />
+    <ClCompile Include="..\..\..\output\outieee.c" />
+    <ClCompile Include="..\..\..\output\outlib.c" />
+    <ClCompile Include="..\..\..\output\outmac32.c" />
+    <ClCompile Include="..\..\..\output\outmac64.c" />
+    <ClCompile Include="..\..\..\output\outobj.c" />
+    <ClCompile Include="..\..\..\output\outrdf2.c" />
+    <ClCompile Include="..\..\..\parser.c" />
+    <ClCompile Include="..\..\..\pptok.c" />
+    <ClCompile Include="..\..\..\preproc-nop.c" />
+    <ClCompile Include="..\..\..\preproc.c" />
+    <ClCompile Include="..\..\..\quote.c" />
+    <ClCompile Include="..\..\..\raa.c" />
+    <ClCompile Include="..\..\..\rbtree.c" />
+    <ClCompile Include="..\..\..\regflags.c" />
+    <ClCompile Include="..\..\..\regvals.c" />
+    <ClCompile Include="..\..\..\saa.c" />
+    <ClCompile Include="..\..\..\stdscan.c" />
+    <ClCompile Include="..\..\..\strfunc.c" />
+    <ClCompile Include="..\..\..\tokhash.c" />
+    <ClCompile Include="..\..\..\ver.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\assemble.h" />
+    <ClInclude Include="..\..\..\disp8.h" />
+    <ClInclude Include="..\..\..\eval.h" />
+    <ClInclude Include="..\..\..\float.h" />
+    <ClInclude Include="..\..\..\hashtbl.h" />
+    <ClInclude Include="..\..\..\iflag.h" />
+    <ClInclude Include="..\..\..\insns.h" />
+    <ClInclude Include="..\..\..\labels.h" />
+    <ClInclude Include="..\..\..\listing.h" />
+    <ClInclude Include="..\..\..\nasm.h" />
+    <ClInclude Include="..\..\..\nasmlib.h" />
+    <ClInclude Include="..\..\..\output\outelf.h" />
+    <ClInclude Include="..\..\..\output\outform.h" />
+    <ClInclude Include="..\..\..\output\outlib.h" />
+    <ClInclude Include="..\..\..\parser.h" />
+    <ClInclude Include="..\..\..\pptok.h" />
+    <ClInclude Include="..\..\..\preproc.h" />
+    <ClInclude Include="..\..\..\quote.h" />
+    <ClInclude Include="..\..\..\raa.h" />
+    <ClInclude Include="..\..\..\rbtree.h" />
+    <ClInclude Include="..\..\..\saa.h" />
+    <ClInclude Include="..\..\..\stdscan.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

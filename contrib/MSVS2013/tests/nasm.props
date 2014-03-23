@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<!--
+<Project
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://schemas.microsoft.com/developer/msbuild/2003/">
+-->
+<!--
+  <PropertyGroup
+    Condition="'$(NASMBeforeTargets)' == '' and '$(NASMAfterTargets)' == '' and '$(ConfigurationType)' != 'Makefile'">
+    <NASMBeforeTargets>Midl</NASMBeforeTargets>
+    <NASMAfterTargets>CustomBuild</NASMAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NASMDependsOn
+      Condition="'$(ConfigurationType)' != 'Makefile'">_SelectedFiles;$(NASMDependsOn)</NASMDependsOn>
+  </PropertyGroup>
+-->	
+  <PropertyGroup
+    Condition="'$(NASMBeforeTargets)' == '' and '$(NASMAfterTargets)' == '' and '$(ConfigurationType)' != 'Makefile'">
+    <NASMBeforeTargets>Midl</NASMBeforeTargets>
+    <NASMAfterTargets>CustomBuild</NASMAfterTargets>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+    <NASM>
+      <OutputFileName>$(ProjectDir)$(IntDir)%(Filename).obj</OutputFileName>
+      <OutputFileFormat>win32</OutputFileFormat>
+      <ErrorReportingFormat>vc</ErrorReportingFormat>
+      <IncludeDir>%(RootDir)%(Directory)</IncludeDir>
+      <Definitions>WIN32</Definitions>
+      <Optimization>Ox</Optimization>
+      <TASMCompatibility>No</TASMCompatibility>
+      <NasmExecutableDir></NasmExecutableDir>
+
+      <CommandLineTemplate Condition="'$(NasmExecutableDir)' == ''">nasm [AllOptions] [AdditionalOptions] [Inputs]</CommandLineTemplate>
+      <CommandLineTemplate Condition="'$(NasmExecutableDir)' != ''">"$(NasmExecutableDir)nasm" [AllOptions] [AdditionalOptions] [Inputs]</CommandLineTemplate>
+
+      <ExecutionDescription>Assembling %(Identity)...</ExecutionDescription>
+      <ShowOnlyRuleProperties>false</ShowOnlyRuleProperties>
+    </NASM>
+  </ItemDefinitionGroup>
+</Project>
