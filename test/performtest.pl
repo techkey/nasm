@@ -142,7 +142,12 @@ unless (!defined $nasm or -x $nasm) {
   sleep 5;
 }
 
-perform($clean, $diff, $golden, $nasm, ! $verbose, $_) foreach @ARGV;
+foreach my $files (@ARGV) {
+    foreach my $file (glob($files)) {
+        perform($clean, $diff, $golden, $nasm, ! $verbose, $file);
+    }
+}
+
 exit $globalresult;
 
 __END__
